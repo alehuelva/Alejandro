@@ -27,7 +27,7 @@
                     [<em><time datetime="{{ comment.created|date('c') }}">{{ comment.created|created_ago }}</time></em>]
                 </p>
             </header>
-            <p>{{ comment.comment }}</p>
+            <p>{{ comment.comment|cutcad }}</p>
             </p>
         </article>
     {% else %}

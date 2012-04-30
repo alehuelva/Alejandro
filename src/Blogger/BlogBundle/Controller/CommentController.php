@@ -47,8 +47,8 @@ class CommentController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()
 		       ->getEntityManager();
-	    $em->persist($comment); //This is related with the persistance in the database, im actually not sure
-	    $em->flush(); //This attempts to push current output all the way to the browser
+	    $em->persist($comment); //notify the Entity Manager that a new entity should be inserted into the database 
+	    $em->flush(); //Write in database
 
             return $this->redirect($this->generateUrl('BloggerBlogBundle_blog_show', array( //generate the url with the show action
                 'id' => $comment->getBlog()->getId(),  //
