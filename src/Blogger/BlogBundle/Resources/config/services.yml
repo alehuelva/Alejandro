@@ -9,3 +9,8 @@ services:
          class: Blogger\BlogBundle\Twig\Extensions\BloggerBlogExtension
          tags:
               - { name: twig.extension }
+
+     cutcad.twig.extension:
+         class: Blogger\BlogBundle\Extension\CutCadExtension
+         tags:
+            -  { name: twig.extension }

@@ -73,8 +73,3 @@ avalanche_imagine:
             type:    thumbnail
             options: { size: [120, 90], mode: outbound }
             
-services:
-    foo.twig.extension:
-        class: Blogger\BlogBundle\Extension\CutCadExtension
-        tags:
-            -  { name: twig.extension }

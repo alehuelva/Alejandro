@@ -10,7 +10,7 @@ class CutCadExtension extends \Twig_Extension {
 		);
 	}
 
-	public function cutcad($comment, $limit=20) {
+	public function cutcad($comment, $limit=50) {
 
 		$length = strlen($comment);
 			
