@@ -1,5 +1,8 @@
 <?php
 
+//In this class we define the model of the comment form using formbuilder
+
+
 namespace Blogger\BlogBundle\Form;
 
 use Symfony\Component\Form\AbstractType;

@@ -2,15 +2,15 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-    {{ parent () }}
+    {{ parent () }}  {#the parent() method imports the content of stylesheets of the parent template#}
 
     {% stylesheets
         '@BloggerBlogBundle/Resources/public/css/*'
-	output='css/blogger.css'
+	output='css/blogger.css'  
 	filter='?yui_css'
-    %}
-        <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
-    {% endstylesheets %}
+    %}{# keep all the code file from the folder public/css in the file css/blogger.css#}
+        <link href="{{ asset_url }}" rel="stylesheet" media="screen" /> {#The asset function takes care of this by determining how #}
+    {% endstylesheets %}   {#the application is being used and generating the correct paths according to the directories and subdirectories.#}
 {% endblock %}
 
 

@@ -1,19 +1,19 @@
 {% extends 'BloggerBlogBundle::layout.html.twig' %}
 
-{% block title %}Contact{% endblock%}
+{% block title %}Contact{% endblock%} {#We change the title block#}
 
 {% block body %}
     <header>
         <h1>Contact symblog</h1>
     </header>
-{% if app.session.hasFlash('blogger-notice') %}
+{% if app.session.hasFlash('blogger-notice') %}  {#Show a flash message if the email is sent, #}
 	<div class="blogger-notice">
-		{{ app.session.flash('blogger-notice') }}
+		{{ app.session.flash('blogger-notice') }} {#blogger-notice will keep this message if it was ok#}
 	</div>
-{% endif %}
+{% endif %}   {#So just if it was sent it will be keeped and thus shown#}
 
     <p>Want to contact symblog?</p>
-
+{#Showing the view of the form#}
     <form action="{{ path('BloggerBlogBundle_contact') }}" method="post" {{ form_enctype(form) }} class="blogger">
         {{ form_errors(form) }}
 

@@ -9,7 +9,8 @@
                 <h2><a href="{{ path('BloggerBlogBundle_blog_show', { 'id': blog.id, 'slug': blog.slug }) }}">{{ blog.title }}</a></h2>
             </header>
 
-            <img src="{{ asset(['images/', blog.image]|join) }}" />
+
+            <img src="{{ asset(['images/', blog.image]|join | apply_filter('my_thumb')) }}" />  
             <div class="snippet">
                 <p>{{ blog.blog(500) }}</p>
                 <p class="continue"><a href="{{ path('BloggerBlogBundle_blog_show', { 'id': blog.id, 'slug': blog.slug }) }}">Continue reading...</a></p>

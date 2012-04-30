@@ -8,8 +8,8 @@ use Symfony\Component\Form\FormBuilder;
 
 class EnquiryType extends AbstractType
 {
-	    public function buildForm(FormBuilder $builder, array $options)
-		        {
+	    public function buildForm(FormBuilder $builder, array $options) //This function use the ,method of formbuilder to build the form
+		        {	    											//This FormBuilder is a special class of symfony
 				        $builder->add('name');
 					        $builder->add('email', 'email');
 					        $builder->add('subject');

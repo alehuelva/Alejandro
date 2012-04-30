@@ -1,11 +1,13 @@
 {# src/Blogger/BlogBundle/Resources/views/Page/sidebar.html.twig #}
+{#Shows the sidebar, the tagcloud and the latestcomments#}
+
 <section class="section">
     <header>
         <h3>Tag Cloud</h3>
     </header>
     <p class="tags">
-        {% for tag, weight in tags %}
-            <span class="weight-{{ weight }}">{{ tag }}</span>
+        {% for tag, weight in tags %} 
+            <span class="weight-{{ weight }}">{{ tag }}</span> {#Css controls the view of the tags and his weight#}
         {% else %}
             <p>There are no tags</p>
         {% endfor %}

@@ -1,0 +1,9 @@
+{# src/Blogger/BlogBundle/Resources/views/Comment/abuseEmail.txt.twig #}
+
+
+{#template for the abuse email what will be sent#}
+A report abuse was made at {{ "now" | date("Y-m-d H:i") }}.
+
+Subject: {{ parameters.blog_id }} --- {{ parameters.comment_id }}
+Body:
+Report abuse in the entry {{ parameters.blog_id }} of the blog, comment {{ parameters.comment_id }}

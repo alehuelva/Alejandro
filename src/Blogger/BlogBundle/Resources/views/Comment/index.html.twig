@@ -4,7 +4,23 @@
         <header>
             <p><span class="highlight">{{ comment.user }}</span> commented <time datetime="{{ comment.created|date('c') }}">{{ comment.created|created_ago }}</time></p>
         </header>
+        
+         {% if gravatar_exists(comment.user) %}
+		       <img src="{{asset(gravatar(comment.user))}} " alt="{{ blog.title }} image not found" class="gravatar" /> 
+		       
+		  {% endif %}
+        
         <p>{{ comment.comment }}</p>
+        
+        
+                {%block report%}								
+        					
+      <p class="ptop"><a href="{{path('BloggerBlogBundle_comment_abuse' , { 'blog_id': comment.blog.id, 'comment_id': comment.id  })}}">Report Abuse </a></p> 
+       {#   <p class="ptop"><a href="{{ path('BloggerBlogBundle_comment_abuse' }}">Report Abuse </a></p> #}
+        
+        		{%endblock report%}
+        		
+        		
     </article>
 {% else %}
     <p>There are no comments for this post. Be the first to comment...</p>

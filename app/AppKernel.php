@@ -1,5 +1,7 @@
 <?php
 
+// In this part we will register all bundles we need
+
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
@@ -17,9 +19,11 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-	    new Blogger\BlogBundle\BloggerBlogBundle(),
-	    new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
-	    new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
+	    	new Blogger\BlogBundle\BloggerBlogBundle(),
+	   	 	new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
+	    	new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
+        	new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
+        	new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

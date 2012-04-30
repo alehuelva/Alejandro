@@ -1,6 +1,7 @@
 <?php
 // src/Blogger/BlogBundle/Entity/Blog.php
-
+//In this class we hold the dates of each blog, we are using annotations because we need to map this entity in the DB
+// using doctrine2 defining the metadatas of each atribute
 namespace Blogger\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -243,7 +244,9 @@ protected $slug;
     {
         return $this->comments;
     }
-    public function __toString()
+    
+    
+    public function __toString() //This for the form, it allows the user to specify the blog post to attach the comment to.
 	{
 	return $this->getTitle();
 	}

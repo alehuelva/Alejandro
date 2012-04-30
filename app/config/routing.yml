@@ -2,8 +2,20 @@ BloggerBlogBundle:
     resource: "@BloggerBlogBundle/Controller"
     type: annotation
 
+_imagine:
+    resource: .
+    type:     imagine
 
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #   prefix:   /_internal
+
+
+
+# This file links the route of blog
+
+#  BloggerBlogBundle:
+#        resource: "@BloggerBlogBundle/Resources/config/routing.yml"
+#        prefix:   /
+# In our case we are using anotations for routing this is the reason of to change it for the first of the file:

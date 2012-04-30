@@ -1,6 +1,7 @@
 <?php
 // src/Blogger/BlogBundle/Entity/Enquiry.php
 
+
 namespace Blogger\BlogBundle\Entity;
 
 use Symfony\Component\Validator\Mapping\ClassMetaData;
@@ -8,6 +9,9 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\MinLength;
 use Symfony\Component\Validator\Constraints\MaxLength;
+
+
+//In this class we want to trap the basic information from the user, such as name, email.. Tenemos los metodos get and set.
 
 class Enquiry
 {
@@ -55,6 +59,7 @@ class Enquiry
 					            $this->body = $body;
 				    }
     public static function loadValidatorMetadata(ClassMetadata $metadata)
+    //This function defines the vqlidators for the fields of the form
     {
 	    $metadata->addPropertyConstraint('name', new NotBlank());
 	    $metadata->addPropertyConstraint('email', new Email(array(

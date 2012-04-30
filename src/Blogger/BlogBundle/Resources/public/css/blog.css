@@ -21,7 +21,9 @@ form.blogger input[type="email"]
 
     .comments { clear: both; }
     .comments .odd { background: #eee; }
-    .comments .comment { padding: 20px; }
-    .comments .comment p { margin-bottom: 0; }
-    .comments h3 { background: #eee; padding: 10px; font-size: 20px; margin-bottom: 20px; clear: both; }
+    .comments .comment { padding: 10px; margin-bottom: 35px;}
+    /*.comments .comment { padding: 20px; }*/
+    .comments .comment p { margin:0px; }
+    .comments h3 { background: #eee; padding-bottom: 10px; font-size: 20px; margin-bottom: 10px; clear: both; }
     .comments .previous-comments { margin-bottom: 20px; }
+    .gravatar {float:left; padding-bottom:1px; padding-right:2px; margin-bottom: 1px; } /*fix it*/

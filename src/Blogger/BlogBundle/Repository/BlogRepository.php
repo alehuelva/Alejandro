@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class BlogRepository extends EntityRepository
 {
-	public function getLatestBlogs($limit = null)
+	public function getLatestBlogs($limit = null) //Get the last comments in the blog
 	{
 		$qb = $this->createQueryBuilder('b')
 			   ->select('b')
@@ -25,7 +25,7 @@ class BlogRepository extends EntityRepository
 			  ->getResult();
 	}
 
-public function getTags()
+public function getTags() //Return the tags
 {
     $blogTags = $this->createQueryBuilder('b')
                      ->select('b.tags')
@@ -35,12 +35,12 @@ public function getTags()
     $tags = array();
     foreach ($blogTags as $blogTag)
     {
-        $tags = array_merge(explode(",", $blogTag['tags']), $tags);
-    }
-
+        $tags = array_merge(explode(",", $blogTag['tags']), $tags);  //array_merge combines 2 arrays and explode return an array $tags  
+    }																//whose fields are filled in with $blogTag['tags'], being each entry,
+																	//the words separated by commas in it
     foreach ($tags as &$tag)
     {
-        $tag = trim($tag);
+        $tag = trim($tag); //Delete the white space in the beginning and in the end of the array
     }
 
     return $tags;
@@ -54,8 +54,8 @@ public function getTagWeights($tags)
 
     foreach ($tags as $tag)
     {
-        $tagWeights[$tag] = (isset($tagWeights[$tag])) ? $tagWeights[$tag] + 1 : 1;
-    }
+        $tagWeights[$tag] = (isset($tagWeights[$tag])) ? $tagWeights[$tag] + 1 : 1; //isset Check true if there is not null value 
+    }																				//If returns true, tagweights +1; else return 1
     // Shuffle the tags
     uksort($tagWeights, function() {
         return rand() > rand();

@@ -6,7 +6,7 @@ class CommentRepository extends EntityRepository
 {
 	public function getCommentsForBlog($blogId,$approved = true)
 	{
-		$qb = $this->createQueryBuilder('c')
+		$qb = $this->createQueryBuilder('c')  //Recovering from the database
 			   ->select('c')
 			   ->where('c.blog = :blog_id')
 	                   ->addOrderBy('c.created')
@@ -19,7 +19,7 @@ class CommentRepository extends EntityRepository
 	   }  
 	public function getLatestComments($limit = 10)
 {
-	$qb = $this->createQueryBuilder('c')
+	$qb = $this->createQueryBuilder('c') //Recover the comments from the database with a $limit
 		   ->select('c')
 		   ->addOrderBy('c.id','DESC');
 	if (false === is_null($limit))

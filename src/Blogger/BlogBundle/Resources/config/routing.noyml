@@ -1,3 +1,5 @@
+#This file is for all routing paths of blog, we are not using it because we use anotations.
+
 BloggerBlogBundle_homepage:
      pattern:  /
      defaults: { _controller: BloggerBlogBundle:Page:index }
@@ -25,3 +27,8 @@ BloggerBlogBundle_comment_create:
         requirements:
            _method: POST
            blog_id: \d+
+BloggerBlogBundle_comment_abuse:
+    pattern:  /{id}/{slug}/abuse
+    defaults: { _controller: BloggerBlogBundle:Comment:abuse }
+    requirements:
+        _method:  GET|POST
