@@ -68,18 +68,13 @@ class CommentController extends Controller
      * @Method({"GET", "POST"})
      */    
     public function abuseAction($blog_id, $comment_id){
-    	//public function abuseAction(){
-    	 
-    	// $blog_id= $this->getBlog()->getId();
-    	// $comment_id= $this->getId();
-    	//$parameters = array(($blog_id), ($comment_id));
+
     	
     	
     	
     	$parameters = array(('blog_id') => $blog_id, ('comment_id')=> $comment_id);
     	
        	$message = \Swift_Message::newInstance()  // Perform some action, we create the instance of the mail
-    	//->setSubject()
     	->setFrom('enquiries@symblog.co.uk')
     	->setTo($this->container->getParameter('blogger_blog.emails.contact_email'))
     	->setBody($this->renderView('BloggerBlogBundle:Comment:abuseEmail.txt.twig', array('parameters' => $parameters)));
@@ -88,17 +83,7 @@ class CommentController extends Controller
     
     	
     	//Redirect
-    	
-    	//$em = $this->getDoctrine()->getEntityManager(); 
-    	//$blog = $em->getRepository('BloggerBlogBundle:Blog')->find($blog_id); //recover the blog and its URL using id and slug atributes
-    	//if (!$blog) {
-    	//	throw $this->createNotFoundException('Error cargando blog.');
-    	//}
-    	//$comments = $em->getRepository('BloggerBlogBundle:Comment')
-    	//->getCommentsForBlog($blog->getId());
-    	
-    	
-    	//All the commented code over this line, is already in the function getBlog()
+
     	$blog= $this->getBlog($blog_id); //Recover the blog, and after it, use its ID and slug
     	
     	return $this->redirect($this->generateUrl('BloggerBlogBundle_blog_show', array(

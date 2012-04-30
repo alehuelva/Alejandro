@@ -246,8 +246,8 @@ protected $slug;
     }
     
     
-    public function __toString() //This for the form, it allows the user to specify the blog post to attach the comment to.
-	{
+    public function __toString() //Return the value of the title variable, when class is managed like a string 
+	{																	//"echo $Blog" will show the title of the blog
 	return $this->getTitle();
 	}
 
