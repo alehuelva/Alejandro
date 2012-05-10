@@ -1,3 +1,7 @@
+MistakesBundle:
+    resource: "@MistakesBundle/Resources/config/routing.yml"
+    prefix:   /
+
 BloggerBlogBundle:
     resource: "@BloggerBlogBundle/Controller"
     type: annotation

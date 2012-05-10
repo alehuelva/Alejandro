@@ -24,6 +24,7 @@ class AppKernel extends Kernel
 	    	new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
         	new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
         	new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
+            new Mistakes\MistakesBundle\MistakesBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
