@@ -1,0 +1,7 @@
+parameters:
+#    blogger_mistakes.example.class: Blogger\Bundle\MistakesBundle\Example
+
+services:
+#    blogger_mistakes.example:
+#        class: %blogger_mistakes.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

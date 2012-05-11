@@ -1,0 +1,3 @@
+BloggerMistakesBundle_homepage:
+    pattern:  /mistakes
+    defaults: { _controller: BloggerMistakesBundle:Mistakes:index }
