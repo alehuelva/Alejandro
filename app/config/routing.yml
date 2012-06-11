@@ -1,3 +1,7 @@
+BloggerMistakesBundle:
+    resource: "@MistakesTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
 MistakesBundle:
     resource: "@MistakesBundle/Resources/config/routing.yml"
     prefix:   /
@@ -5,10 +9,18 @@ MistakesBundle:
 BloggerBlogBundle:
     resource: "@BloggerBlogBundle/Controller"
     type: annotation
-
+    
+_demo:
+    resource: "@SaadTaziGChartBundle/Resources/config/routing.yml"
+    type:     yaml
+    prefix:   /gchart
+    
 _imagine:
     resource: .
     type:     imagine
+        
+    
+
 
 # Internal routing configuration to handle ESI
 #_internal:

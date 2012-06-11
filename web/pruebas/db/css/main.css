@@ -1,0 +1,91 @@
+body {
+  background: #DDD;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 2em;
+}
+
+#header {
+  width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#header h1 {
+  color: #777;
+  text-shadow: 0 2px 0 #FFF, 0 -2px 0 #444;
+  margin: 0 ;
+  padding: 0;
+}
+
+#body {
+  margin: 0 auto;
+  width: 900px;
+  background: #FFF;
+  border-radius: 9px;
+  -webkit-box-shadow: 0px 0px 4px #666;
+}
+
+#navigation {
+  border-bottom: solid 1px #AAA;
+  padding: 0;
+}
+
+#navigation li {
+  display: inline-block;
+}
+
+#navigation li a,
+#navigation li a:visited {
+  display: block;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  color: #333;
+}
+
+#navigation li a:hover,
+#navigation li a:active{
+  background: #444;
+  color: #FFF;
+}
+
+#content {
+  padding: 0 10px;
+}
+
+form {
+  margin: 10px;
+}
+
+input {
+  font-size: 1em;
+}
+
+select {
+  font-size: 2em;
+}
+
+#footer{
+  border-top: solid 1px #777;
+  text-align: center;
+  padding: 10px;
+  color: #AAA;
+}
+
+table.form th {
+  text-align: right;
+}
+
+label{
+  display: block;
+}
+
+.error {
+  color: #770000;
+}
+
+.session {
+  position: absolute;
+  right: 0;
+  top: 10px;
+}

@@ -1,0 +1,3 @@
+[submodule "vendor/bundles/SaadTazi/GChartBundle"]
+	path = vendor/bundles/SaadTazi/GChartBundle
+	url = git://github.com/saadtazi/SaadTaziGChartBundle.git

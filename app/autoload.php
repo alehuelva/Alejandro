@@ -20,7 +20,10 @@ $loader->registerNamespaces(array(
 	'Ornicar' 		   => __DIR__.'/../vendor/bundles',
 	'Imagine'          => __DIR__.'/../vendor/imagine/lib',
 	'Avalanche'        => __DIR__.'/../vendor/bundles',
+	'SaadTazi' 		   => __DIR__.'/../vendor/bundles',			
 ));
+
+
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
     'Twig_'            => __DIR__.'/../vendor/twig/lib',

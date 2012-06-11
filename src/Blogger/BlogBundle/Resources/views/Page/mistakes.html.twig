@@ -1,0 +1,19 @@
+
+{###### Showing graphics ######}
+
+<div id="chart2">&nbsp;</div>
+	<script>
+	$(function() {
+	{{ gchart_column_chart(dataTable2, 'chart2', 600, 500, 'Vertical') }} //Medidas y titulo
+	});
+	</script>
+<div id="chart3">&nbsp;</div>
+
+<hr/>
+<div id="chart4">&nbsp;</div>
+	<script>
+	$(function() {
+	{{ gchart_bar_chart(dataTable2, 'chart4', 600, 500, 'Horizontal') }}
+	});
+	</script>
+    

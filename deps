@@ -74,6 +74,11 @@
 [AvalancheImagineBundle]
     git=http://github.com/avalanche123/AvalancheImagineBundle.git
     target=bundles/Avalanche/Bundle/ImagineBundle
+    
+[SaadTaziGChartBundle]
+    git=git://github.com/saadtazi/SaadTaziGChartBundle.git
+    target=/bundles/SaadTazi/GChartBundle    
+
 
 [AsseticBundle]
     git=http://github.com/symfony/AsseticBundle.git

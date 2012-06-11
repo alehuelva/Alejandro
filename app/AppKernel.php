@@ -25,6 +25,8 @@ class AppKernel extends Kernel
         	new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
         	new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             new Mistakes\MistakesBundle\MistakesBundle(),
+            new Mistakes\MistakesTestBundle\MistakesTestBundle(),
+        	new SaadTazi\GChartBundle\SaadTaziGChartBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

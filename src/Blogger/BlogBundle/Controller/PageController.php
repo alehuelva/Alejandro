@@ -33,7 +33,7 @@ class PageController extends Controller
 	}
 	
 	
-	//The about controller just render the qbout view
+	//**********About controller just render the about view
 	
 /**
  * @Route("/about" , name="BloggerBlogBundle_about")
