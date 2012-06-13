@@ -18,10 +18,9 @@ class CommentController extends Controller
     public function newAction($blog_id) //Render the Form for a new comment
     {
         $blog = $this->getBlog($blog_id);
-
         $comment = new Comment();
         $comment->setBlog($blog);
-        $form   = $this->createForm(new CommentType(), $comment);
+        $form = $this->createForm(new CommentType(), $comment);
 
         return $this->render('BloggerBlogBundle:Comment:form.html.twig', array(
             'comment' => $comment,
@@ -37,24 +36,21 @@ class CommentController extends Controller
     public function createAction($blog_id) //Create the comment, is used inside the new comment view, once the form has been rended, it sent 
     {
         $blog = $this->getBlog($blog_id);
-
         $comment  = new Comment();  //New comment
         $comment->setBlog($blog);   //The id blog is keeped in the instance
         $request = $this->getRequest();
         $form    = $this->createForm(new CommentType(), $comment); //Commenttype is the class where we hold the details of our form
         $form->bindRequest($request);
-
         if ($form->isValid()) {
             $em = $this->getDoctrine()
-		       ->getEntityManager();
+		       	->getEntityManager();
 	    $em->persist($comment); //notify the Entity Manager that a new entity should be inserted into the database 
 	    $em->flush(); //Write in database
-
-            return $this->redirect($this->generateUrl('BloggerBlogBundle_blog_show', array( //generate the url with the show action
+        return $this->redirect($this->generateUrl('BloggerBlogBundle_blog_show', array( //generate the url with the show action
                 'id' => $comment->getBlog()->getId(),  //
-		'slug' => $comment->getBlog()->getSlug())) .
+				'slug' => $comment->getBlog()->getSlug())) .
                 '#comment-' . $comment->getId()
-            );
+                );
         }
 
         return $this->render('BloggerBlogBundle:Comment:create.html.twig', array( //rendder the view
@@ -63,40 +59,31 @@ class CommentController extends Controller
         ));
     }
       
+    
     /**
      * @Route("/{blog_id}/{comment_id}/abuse", requirements={"blog_id" = "\d+", "comment_id" = "\d+"}, name="BloggerBlogBundle_comment_abuse")
      * @Method({"GET", "POST"})
      */    
-    public function abuseAction($blog_id, $comment_id){
-
-    	
-    	
-    	
-    	$parameters = array(('blog_id') => $blog_id, ('comment_id')=> $comment_id);
-    	
+    
+    public function abuseAction($blog_id, $comment_id) 
+    { 	
+    	$parameters = array(('blog_id') => $blog_id,
+    						('comment_id') => $comment_id
+    					   );
        	$message = \Swift_Message::newInstance()  // Perform some action, we create the instance of the mail
-    	->setFrom('enquiries@symblog.co.uk')
-    	->setTo($this->container->getParameter('blogger_blog.emails.contact_email'))
-    	->setBody($this->renderView('BloggerBlogBundle:Comment:abuseEmail.txt.twig', array('parameters' => $parameters)));
+    		->setFrom('enquiries@symblog.co.uk')
+    		->setTo($this->container->getParameter('blogger_blog.emails.contact_email'))
+    		->setBody($this->renderView('BloggerBlogBundle:Comment:abuseEmail.txt.twig', array('parameters' => $parameters)));
     	$this->get('mailer')->send($message); //envía mensaje
     	$this->get('session')->setFlash('blogger-notice', 'Your report was successfully sent. Thank you!'); // Flash message
-    
     	
     	//Redirect
-
-    	$blog= $this->getBlog($blog_id); //Recover the blog, and after it, use its ID and slug
-    	
+    	$blog = $this->getBlog($blog_id); //Recover the blog, and after it, use its ID and slug
     	return $this->redirect($this->generateUrl('BloggerBlogBundle_blog_show', array(
     			'id' => $blog->getId(),
     			'slug' => $blog->getSlug())) 
     	);
-    	
-    	
-    	
     }
-    
-    
-    
     
     
 
@@ -104,14 +91,11 @@ class CommentController extends Controller
     {
         $em = $this->getDoctrine()
                     ->getEntityManager();
-
         $blog = $em->getRepository('BloggerBlogBundle:Blog')->find($blog_id);
-
         if (!$blog) {
             throw $this->createNotFoundException('Unable to find Blog post.');
         }
-
+        
         return $blog;
     }
-
 }
