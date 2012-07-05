@@ -1,19 +1,35 @@
 
-{###### Showing graphics ######}
+<script>
 
+function ChartCallBackHandlerchart2() {
+
+	projectArray = new Array();
+	{% for key, charts2 in charts['0']['rows']  %}
+		projectArray['{{key}}'] = "{{charts2['c']['0']['v']|e }}";
+ 	{% endfor %}
+ 	
+	selectrow = chartchart2.getSelection()[0].row;		
+	{% for proyect in charts['1'] %}
+		if ((projectArray[selectrow]) == '{{ proyect.name|e }}') {
+			 window.open('http://kunstmaan.airbrake.io/projects/' + '{{ proyect.abId|e }}' + '/deploys.xml?auth_token=808b45ec1d7854563c3bb2fab160e5b90f5e1ae3 ' , 'new');
+		}
+	{% endfor %}
+		
+}
+
+
+$(function() {
+	{{ gchart_column_chart(charts[0], 'chart2', 800, 500, 'vertical') }}
+});
+
+</script>
+	
+     
 <div id="chart2">&nbsp;</div>
-	<script>
-	$(function() {
-	{{ gchart_column_chart(dataTable2, 'chart2', 600, 500, 'Vertical') }} //Medidas y titulo
-	});
-	</script>
-<div id="chart3">&nbsp;</div>
 
-<hr/>
-<div id="chart4">&nbsp;</div>
-	<script>
-	$(function() {
-	{{ gchart_bar_chart(dataTable2, 'chart4', 600, 500, 'Horizontal') }}
-	});
-	</script>
+    
+
+
+
+
     

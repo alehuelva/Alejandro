@@ -12,48 +12,13 @@ use SaadTazi\GChartBundle\Chart\PieChart;
 
 class MistakesController extends Controller {
 
-
+	//$ app/console BlogBoundle:update	 (Command to execute in console)
+	
 	public function grafAction()
 	{   
-		$obj = new LoadXml();
-		$xmlprojects = $obj->loadProjects();
-		$obj->resetErrors($xmlprojects);
-		$page = 0;
-			
-		//**********Load errors from all xml in array $temperror and keep them in database
-		
-		$xmlerrors = 1;
-		while ($xmlerrors) {
-			$xmlerrors = $obj->loadErrors($page);
-			$obj->setErrors($xmlerrors);
-			$page++;
-		}
-		$temperror= ($obj -> getErrors());
+			/*** UPDATE DATABASE IN CONSOLE -> $ app/console BlogBoundle:update	 (Command to execute in console)
 
-		//** Inserting or updating in database
-		
-		foreach ($temperror as $key=>$error) {
-			$prueba = 0;
-			$em = $this->getDoctrine()->getEntityManager();
-			$prueba = $em->getRepository('MistakesTestBundle:Error')->findOneByName($error['name']);
-				
-			if (!$prueba) {      //CREATE
-				$errordoctr = new Error();
-				$errordoctr->setAbId($key);
-				$errordoctr->setName($error['name']);
-				$errordoctr->setCont($error['cont']);
-				$em = $this->getDoctrine()->getEntityManager();
-				$em->persist($errordoctr);
-			}
-			else {              //UPDATE
-				$conttemp = $prueba->getCont();
-				if ($error['cont'] != $conttemp) {
-					$prueba->setCont($error['cont']);
-				}
-			}
-		}
-		$em->flush();
-			
+
 					/* DELETE DATABASE
 					 * $repository = $this->getDoctrine()
 					 * ->getRepository('MistakesTestBundle:Error');
@@ -67,32 +32,22 @@ class MistakesController extends Controller {
 					 * //$em->flush();
 					*/
 		
-		
-		//** Create an array $temperror containing the objects from doctrine database
+			//** Create an array $temperror containing the database
+			$repository = $this->getDoctrine()
+				->getRepository('MistakesTestBundle:Error');
+			$temperror = $repository->findAll();
+			$dataTable2 = new DataTable\DataTable();
+			$dataTable2->addColumn('id1', 'Error', 'string');
+			$dataTable2->addColumnObject(new DataTable\DataColumn('id2', 'Errors', 'number'));
+			foreach ($temperror as $tablaerror) {
+				$dataTable2->addRow(array($tablaerror->getName(), $tablaerror->getCont()));
 				
-		$em = $this->getDoctrine()->getEntityManager();
-		$query = $em->createQuery(
-				'SELECT a
-				 FROM Mistakes\MistakesTestBundle\Entity\Error a
-				 ORDER BY a.cont DESC'
-				 );
-		$temperror = $query->getResult(); //** Array of Error objects
-
-		//** Creating the graphic
-		$dataTable2 = new DataTable\DataTable();
-		$dataTable2->addColumn('id1', 'Airbrake', 'string');
-		$dataTable2->addColumnObject(new DataTable\DataColumn('id2', 'Errors', 'number'));
+			}
+			$dataTable2 = $dataTable2->toArray();
+			$charts = array($dataTable2, $temperror); 
 			
-		foreach ($temperror as $tablaerror) {
-			$dataTable2->addRow(array($tablaerror->getName(), $tablaerror->getCont()));
-		}
-		
-		//**Returning the view
-		
-		return $this->render('BloggerBlogBundle:Page:mistakes.html.twig', array( //rendder the view
-				'errors' => $temperror,
-				'dataTable2' => $dataTable2->toArray()
-				)
-				);	
-	}
+			return $this->render('MistakesTestBundle:Mistakes:index.html.twig', array( //rendder the view
+					'charts' => $charts,
+			));
+			}
 }

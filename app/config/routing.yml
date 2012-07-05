@@ -1,5 +1,5 @@
 BloggerMistakesBundle:
-    resource: "@MistakesTestBundle/Resources/config/routing.yml"
+    resource: "@MistakesTestBundle/Resources/config/mistakes_routing.yml"
     prefix:   /
 
 MistakesBundle:
